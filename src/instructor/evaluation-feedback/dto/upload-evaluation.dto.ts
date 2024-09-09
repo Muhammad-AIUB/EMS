@@ -1,31 +1,7 @@
-// evaluation-feedback/dto/upload-evaluation.dto.ts
+import { CreateEvaluationDto } from './create-evaluation.dto';
+import { IsNotEmpty } from 'class-validator';
 
-import { IsString, IsNotEmpty, IsDateString, IsNumber } from 'class-validator';
-
-export class UploadEvaluationDto {
-  @IsString()
+export class UploadEvaluationDto extends CreateEvaluationDto {
   @IsNotEmpty()
-  readonly courseId: string;
-
-  @IsString()
-  @IsNotEmpty()
-  readonly evaluationType: string; // Could be 'quiz' or 'assignment'
-
-  @IsString()
-  @IsNotEmpty()
-  readonly title: string;
-
-  @IsString()
-  readonly description?: string; // Optional description
-
-  @IsDateString()
-  @IsNotEmpty()
-  readonly deadline: Date;
-
-  @IsNumber()
-  @IsNotEmpty()
-  readonly maximumPoints: number;
-
-  @IsNotEmpty()
-  readonly evaluationFile: Express.Multer.File; // Multer file object
+  readonly evaluationFile: Express.Multer.File;
 }

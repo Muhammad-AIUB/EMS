@@ -5,18 +5,16 @@ import { CreateEventDto } from './dto/create-event.dto';
 
 @Injectable()
 export class EventsService {
-  async createEvent(createEventDto: CreateEventDto) {
-    const { title, description, location, startDate, endDate } = createEventDto;
+  private events = []; // This will be replaced by a database later
 
-    // Implement logic to save event details to the database or perform other operations
-
-    return {
-      message: 'Event created successfully',
-      title,
-      description,
-      location,
-      startDate,
-      endDate,
+  createEvent(createEventDto: CreateEventDto) {
+    const newEvent = {
+      id: (this.events.length + 1).toString(), // Temporary ID logic; replace with database logic
+      ...createEventDto,
     };
+    this.events.push(newEvent);
+    return newEvent;
   }
+
+  // Additional methods for retrieving, updating, and deleting events could be added here
 }

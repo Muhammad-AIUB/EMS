@@ -1,10 +1,4 @@
-import {
-  Controller,
-  Post,
-  UploadedFile,
-  UseInterceptors,
-  Body,
-} from '@nestjs/common';
+import { Controller, Post, UploadedFile, UseInterceptors, Body } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { CourseMaterialService } from './course-material-submission.service';
 import { UploadCourseMaterialDto } from './dto/upload-course-material.dto';
@@ -19,9 +13,6 @@ export class CourseMaterialController {
     @UploadedFile() file: Express.Multer.File,
     @Body() uploadCourseMaterialDto: UploadCourseMaterialDto,
   ) {
-    return this.courseMaterialService.uploadCourseMaterial(
-      file,
-      uploadCourseMaterialDto,
-    );
+    return this.courseMaterialService.uploadCourseMaterial(file, uploadCourseMaterialDto);
   }
 }

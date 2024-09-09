@@ -1,35 +1,29 @@
-// evaluation-feedback/evaluation-feedback.service.ts
-
 import { Injectable } from '@nestjs/common';
 import { UploadEvaluationDto } from './dto/upload-evaluation.dto';
 
 @Injectable()
 export class EvaluationFeedbackService {
   async uploadEvaluation(uploadEvaluationDto: UploadEvaluationDto) {
-    const {
-      courseId,
-      evaluationType,
-      title,
-      description,
-      deadline,
-      maximumPoints,
-      evaluationFile,
-    } = uploadEvaluationDto;
+    const { courseId, title, description, type, questions, maximumPoints, evaluationFile } = uploadEvaluationDto;
 
-    // Implement your file saving logic here
-    const filePath = `path/to/save/${evaluationFile.originalname}`;
-
-    // Here you can save file details to the database or perform other operations related to evaluation creation
+    // You can add logic to save the file and other data to a database or file system
+    const filePath = `uploads/${evaluationFile.filename}`;
 
     return {
       message: 'Evaluation uploaded successfully',
-      filePath,
-      courseId,
-      evaluationType,
-      title,
-      description,
-      deadline,
-      maximumPoints,
+      evaluation: {
+        courseId,
+        title,
+        description,
+        type,
+        questions,
+        maximumPoints,
+        evaluationFile: {
+          originalname: evaluationFile.originalname,
+          filename: evaluationFile.filename,
+          path: filePath,
+        },
+      },
     };
   }
 }

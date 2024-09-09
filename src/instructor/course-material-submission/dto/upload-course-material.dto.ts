@@ -16,6 +16,9 @@ export class UploadCourseMaterialDto {
   @IsString()
   readonly materialContent?: string;
 
+  @IsNotEmpty()
+  readonly uploadDate: Date;
+
   @IsString()
   @IsNotEmpty()
   readonly visibility: string;

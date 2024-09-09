@@ -1,5 +1,3 @@
-// evaluation-feedback/evaluation-feedback.module.ts
-
 import { Module } from '@nestjs/common';
 import { EvaluationFeedbackController } from './evaluation-feedback.controller';
 import { EvaluationFeedbackService } from './evaluation-feedback.service';

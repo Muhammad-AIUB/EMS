@@ -1,16 +1,24 @@
+// events/event.entity.ts
+
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
-@Entity()
+@Entity('events')  // The name of the table in the database
 export class EventEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  eventName: string;
+  title: string;
 
-  @Column()
-  eventDate: Date;
-
-  @Column()
+  @Column({ nullable: true })
   description: string;
+
+  @Column()
+  location: string;
+
+  @Column()
+  startDate: Date;
+
+  @Column()
+  endDate: Date;
 }
